@@ -369,12 +369,7 @@ app.get('/api/consumptions/:apartmentId' , async (req, res) => {
 
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log('Successfully connected to MongoDB.'))
-.catch((error) => console.error('Failed to connect to MongoDB:', error));
-
+mongoose.connect("mongodb://mongo-db/commons-db")
 // Server listening
 const PORT = process.env.PORT || 5000; // Fallback to 5000 if PORT is not defined
 app.listen(PORT, () => {
