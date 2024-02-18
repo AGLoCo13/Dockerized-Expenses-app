@@ -4,11 +4,14 @@ FROM node:18-alpine
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to work directory
-COPY package*.json ./
+# Copy package.json and yarn.lock to work directory
+COPY package*.json yarn.lock ./
 
-# Install any needed packages specified in package.json
-RUN npm install
+# Install Yarn globally
+RUN npm install -g yarn
+
+# Install project dependencies
+RUN yarn install --frozen-lockfile
 
 # Bundle the source code inside the Docker image
 COPY . .
@@ -17,4 +20,4 @@ COPY . .
 EXPOSE 5000
 
 # Define the command to run your app
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
