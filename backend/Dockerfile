@@ -2,7 +2,7 @@
 FROM node:18-alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /var/www/mern_app/backend
 
 # Copy package.json and package-lock.json to work directory
 COPY package*.json ./
