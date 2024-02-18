@@ -1,23 +1,14 @@
-# Use an official Node runtime as a parent image
-FROM node:18-alpine
+# Use an official Nginx image as a parent image
+FROM nginx:alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /usr/share/nginx/html
 
-# Copy package.json and yarn.lock to work directory
-COPY package*.json yarn.lock ./
+# Copy the built frontend files into the container
+COPY build/ .
 
-# Install Yarn globally
-RUN npm install -g yarn
+# Expose port 80 to the outside world
+EXPOSE 80
 
-# Install project dependencies
-RUN yarn install --frozen-lockfile
-
-# Bundle the source code inside the Docker image
-COPY . .
-
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
-
-# Define the command to run your app
-CMD ["yarn", "start"]
+# Define the command to run Nginx
+CMD ["nginx", "-g", "daemon off;"]
