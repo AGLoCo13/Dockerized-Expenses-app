@@ -2,7 +2,7 @@
 - hosts: webserver2
   become: yes
   vars:
-    github_repo_url: "https://github.com/AGLoCo13/Node-React.js-Expenses-Application.git"
+    github_repo_url: "https://github.com/AGLoCo13/Dockerized-Expenses-app.git"
     project_directory: "/var/www/mern_app"
     pm2_app_name: "mern_app_backend"
   tasks:
@@ -59,6 +59,10 @@
         clone: yes
         update: yes
         force: yes
+
+    - name: Create Docker network
+      command: docker network create mern-network
+      ignore_errors: yes  # Ignore errors if the network already exists
 
     - name: Build and Start Docker Compose
       command: docker-compose -f /var/www/mern_app/docker-compose.yml up -d

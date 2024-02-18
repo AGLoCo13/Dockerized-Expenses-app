@@ -31,5 +31,5 @@ services:
     networks:
       - mern-network
 networks:
-  mern.network:
+  mern-network:
     driver: bridge
