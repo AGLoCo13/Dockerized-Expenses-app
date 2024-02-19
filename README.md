@@ -26,6 +26,7 @@ Before you begin, ensure you have the following installed on your machine:
     ```
 
 4. Navigate to the ansible directory:
+
  ```bash
     cd ansible
     ```
