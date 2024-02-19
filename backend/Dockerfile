@@ -2,16 +2,17 @@
 FROM node:18-alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/app/backend
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app/
 
 # Copy package.json and package-lock.json to work directory
-COPY package.json .
+COPY package.json /usr/src/app/
 
 # Install any needed packages specified in package.json
 RUN npm install
 
 # Bundle the source code inside the Docker image
-COPY . . 
+COPY . /usr/src/app/
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
