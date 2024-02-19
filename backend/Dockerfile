@@ -5,11 +5,10 @@ FROM node:18-alpine
 WORKDIR /usr/src/app/backend
 
 # Copy package.json and package-lock.json to work directory
-COPY backend/package*.json ./
+COPY package.json .
 
 # Install any needed packages specified in package.json
 RUN npm install
-RUN npm install mongoose
 
 # Bundle the source code inside the Docker image
 COPY backend/ .
