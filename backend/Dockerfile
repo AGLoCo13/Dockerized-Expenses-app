@@ -11,7 +11,7 @@ COPY package.json .
 RUN npm install
 
 # Bundle the source code inside the Docker image
-COPY backend/ .
+COPY . . 
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
