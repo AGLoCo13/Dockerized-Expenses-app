@@ -21,7 +21,6 @@ services:
       - mern-network
     volumes:
       - ./backend:/usr/src/app/backend
-      - ./backend/node_modules:/usr/src/app/backend/node_modules
   frontend:
     build: ./frontend
     container_name: react-ui
