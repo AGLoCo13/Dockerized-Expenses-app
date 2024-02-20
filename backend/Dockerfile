@@ -11,7 +11,7 @@ COPY backend/package*.json ./
 RUN npm ci --only=production
 
 # Bundle the source code inside the Docker image
-COPY backend/ .
+COPY backend ./
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
