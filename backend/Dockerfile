@@ -9,6 +9,7 @@ COPY backend/package*.json ./
 
 # Install any needed packages specified in package.json
 RUN npm ci --only=production
+RUN npm install mongoose
 
 # Bundle the source code inside the Docker image
 COPY backend ./
